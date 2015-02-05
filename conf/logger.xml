@@ -9,7 +9,7 @@
         </encoder>
         <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
             <evaluator>
-                <expression>return logger.equals("application");</expression>
+                <expression>return mdc != null &amp;&amp; mdc.get("traceToken") != null;</expression>
             </evaluator>
             <OnMatch>ACCEPT</OnMatch>
             <OnMismatch>DENY</OnMismatch>
@@ -23,7 +23,7 @@
         </encoder>
         <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
             <evaluator>
-                <expression>return logger.equals("application");</expression>
+                <expression>return mdc != null &amp;&amp; mdc.get("traceToken") != null;</expression>
             </evaluator>
             <OnMatch>DENY</OnMatch>
             <OnMismatch>ACCEPT</OnMismatch>
